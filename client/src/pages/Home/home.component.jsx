@@ -14,7 +14,6 @@ import './home.styles.scss';
 import 'aos/dist/aos.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Component } from 'react';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
