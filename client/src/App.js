@@ -8,7 +8,6 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 
 import Home from './pages/Home/home.component';
 import Admin from './admin/Admin/admin.component';
-import Preview from './admin/Preview/preview.component';
 
 function App() {
 
@@ -16,8 +15,7 @@ function App() {
     <div className="App">
       <Router>
         <Route path='/' exact component={Home} />
-        <Route path='/admin' exact component={Admin} />
-        <Route path='/preview' exact component={Preview} />
+        <Route path='/admin' component={Admin} />
       </Router>
     </div>
   );
