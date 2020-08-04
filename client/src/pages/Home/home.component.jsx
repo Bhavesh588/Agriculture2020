@@ -35,7 +35,7 @@ function Home() {
     const [data, setData] = useState({ admindata: [] })
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get('http://localhost:5000/admin',);
+            const result = await axios.get('http://localhost:5000/admin');
             setData(result.data)
         };
         fetchData();
