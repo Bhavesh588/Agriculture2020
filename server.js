@@ -8,7 +8,7 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 
-const db = require('./config/keys').mongoURI;
+const db = require('./config/keys').MONGO_URI;
 
 mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 .then(() => console.log('MongoDB Established Connection'))
