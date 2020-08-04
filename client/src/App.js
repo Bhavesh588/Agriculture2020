@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route path='/' exact component={Home} />
+        <Route exact path='/'><Home /></Route>
         <Route path='/admin' component={Admin} />
       </Router>
     </div>
