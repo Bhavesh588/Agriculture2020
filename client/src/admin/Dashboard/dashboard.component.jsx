@@ -11,25 +11,25 @@ const Dashboard = ({ user }) => {
         let status
         let adminId
         
-        await axios.get('http://localhost:5000/users/'+id)
+        await axios.get('/users/'+id)
         .then(res => {
             data.push(res.data);
 
-            axios.delete('http://localhost:5000/users/'+id)
+            axios.delete('/users/'+id)
             .then(res => console.log(res.data))
         }); 
 
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
         .then(res => {
             if(res.data.length === 0) {
                 console.log('It is empty')
                 status = 'accept'
-                axios.post('http://localhost:5000/admin/add/'+status, data)
+                axios.post('/admin/add/'+status, data)
                 .then(res => console.log(res.data))
             } else {
                 adminId = res.data[0]._id
                 status = 'accept'
-                axios.post('http://localhost:5000/admin/update/'+adminId+'/'+status, data)
+                axios.post('/admin/update/'+adminId+'/'+status, data)
                 .then(res => console.log(res.data))
             }
         });
@@ -41,25 +41,25 @@ const Dashboard = ({ user }) => {
         let status
         let adminId
         
-        await axios.get('http://localhost:5000/users/'+id)
+        await axios.get('/users/'+id)
         .then(res => {
             data.push(res.data);
 
-            axios.delete('http://localhost:5000/users/'+id)
+            axios.delete('/users/'+id)
             .then(res => console.log(res.data))
         }); 
 
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
         .then(res => {
             if(res.data.length === 0) {
                 console.log('It is empty')
                 status = 'cancel'
-                axios.post('http://localhost:5000/admin/add/'+status, data)
+                axios.post('/admin/add/'+status, data)
                 .then(res => console.log(res.data))
             } else {
                 adminId = res.data[0]._id
                 status = 'cancel'
-                axios.post('http://localhost:5000/admin/update/'+adminId+'/'+status, data)
+                axios.post('/admin/update/'+adminId+'/'+status, data)
                 .then(res => console.log(res.data))
             }
         });

@@ -10,25 +10,25 @@ const Orders = ({ user, admin }) => {
         let status
         let adminId
         
-        await axios.get('http://localhost:5000/users/'+id)
+        await axios.get('/users/'+id)
         .then(res => {
             data.push(res.data);
 
-            axios.delete('http://localhost:5000/users/'+id)
+            axios.delete('/users/'+id)
             .then(res => console.log(res.data))
         }); 
 
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
         .then(res => {
             if(res.data.length === 0) {
                 console.log('It is empty')
                 status = 'accept'
-                axios.post('http://localhost:5000/admin/add/'+status, data)
+                axios.post('/admin/add/'+status, data)
                 .then(res => console.log(res.data))
             } else {
                 adminId = res.data[0]._id
                 status = 'accept'
-                axios.post('http://localhost:5000/admin/update/'+adminId+'/'+status, data)
+                axios.post('/admin/update/'+adminId+'/'+status, data)
                 .then(res => console.log(res.data))
             }
         });
@@ -40,25 +40,25 @@ const Orders = ({ user, admin }) => {
         let status
         let adminId
         
-        await axios.get('http://localhost:5000/users/'+id)
+        await axios.get('/users/'+id)
         .then(res => {
             data.push(res.data);
 
-            axios.delete('http://localhost:5000/users/'+id)
+            axios.delete('/users/'+id)
             .then(res => console.log(res.data))
         }); 
 
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
         .then(res => {
             if(res.data.length === 0) {
                 console.log('It is empty')
                 status = 'cancel'
-                axios.post('http://localhost:5000/admin/add/'+status, data)
+                axios.post('/admin/add/'+status, data)
                 .then(res => console.log(res.data))
             } else {
                 adminId = res.data[0]._id
                 status = 'cancel'
-                axios.post('http://localhost:5000/admin/update/'+adminId+'/'+status, data)
+                axios.post('/admin/update/'+adminId+'/'+status, data)
                 .then(res => console.log(res.data))
             }
         });
@@ -76,18 +76,18 @@ const Orders = ({ user, admin }) => {
                     data.push(admin[0].orderaccept[i])
                     
                     status = 'acceptorder'
-                    axios.post('http://localhost:5000/admin/pop/'+admin[0]._id+'/'+id+'/'+status)
+                    axios.post('/admin/pop/'+admin[0]._id+'/'+id+'/'+status)
                         .then(res => console.log(res.data))
                 }
                 return 0;
             })
         }
 
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
         .then(res => {
             adminId = res.data[0]._id
             status = 'done'
-            axios.post('http://localhost:5000/admin/update/'+adminId+'/'+status, data)
+            axios.post('/admin/update/'+adminId+'/'+status, data)
             .then(res => console.log(res.data))
         });
         window.location.reload();
@@ -104,18 +104,18 @@ const Orders = ({ user, admin }) => {
                     data.push(admin[0].orderaccept[i])
                     
                     status = 'acceptorder'
-                    axios.post('http://localhost:5000/admin/pop/'+admin[0]._id+'/'+id+'/'+status)
+                    axios.post('/admin/pop/'+admin[0]._id+'/'+id+'/'+status)
                         .then(res => console.log(res.data))
                 }
                 return 0;
             })
         }
 
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
         .then(res => {
             adminId = res.data[0]._id
             status = 'cancel'
-            axios.post('http://localhost:5000/admin/update/'+adminId+'/'+status, data)
+            axios.post('/admin/update/'+adminId+'/'+status, data)
             .then(res => console.log(res.data))
         });
         window.location.reload();
@@ -132,18 +132,18 @@ const Orders = ({ user, admin }) => {
                     data.push(admin[0].ordercancel[i])
                     
                     status = 'acceptcancel'
-                    axios.post('http://localhost:5000/admin/pop/'+admin[0]._id+'/'+id+'/'+status)
+                    axios.post('/admin/pop/'+admin[0]._id+'/'+id+'/'+status)
                         .then(res => console.log(res.data))
                 }
                 return 0;
             })
         }
 
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
         .then(res => {
             adminId = res.data[0]._id
             status = 'accept'
-            axios.post('http://localhost:5000/admin/update/'+adminId+'/'+status, data)
+            axios.post('/admin/update/'+adminId+'/'+status, data)
             .then(res => console.log(res.data))
         });
         window.location.reload();

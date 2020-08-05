@@ -57,7 +57,7 @@ class Website extends Component {
     }
 
     async componentDidMount() {
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
         .then(res => {
             if(res.data.length !== 0) {
                 this.setState({
@@ -95,7 +95,7 @@ class Website extends Component {
         }
         let data = {admindark: !this.state.checked2}
         let status = 'dark'
-        axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+        axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
     }
 
@@ -104,7 +104,7 @@ class Website extends Component {
             item.id = i+1
         )
         let status = 'arrange'
-        axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, this.state.list)
+        axios.post('/admin/update/' + this.state.admindata._id + '/' + status, this.state.list)
         .then(res => console.log(res.data))
     }
 
@@ -188,7 +188,7 @@ class Website extends Component {
                 p_des: this.state.p_des
             }
             let status = 'Product'
-            axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+            axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
             window.location.reload();
         } else if(e.target.name === 'service') {
@@ -200,7 +200,7 @@ class Website extends Component {
                 s_des: this.state.s_des
             }
             let status = 'Service'
-            axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+            axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
             window.location.reload();
         } else if(e.target.name === 'certificate') {
@@ -210,7 +210,7 @@ class Website extends Component {
                 certificate: this.state.certificate
             }
             let status = 'Certificate'
-            axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+            axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
             window.location.reload();
         } else if(e.target.name === 'team') {
@@ -226,7 +226,7 @@ class Website extends Component {
                 }
             }
             let status = 'Team'
-            axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+            axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
             window.location.reload();
         }
@@ -262,7 +262,7 @@ class Website extends Component {
             }
         }
         let status = 'Home'
-        axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+        axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
     }
 
@@ -294,7 +294,7 @@ class Website extends Component {
             p_des: this.state.p_des
         }
         let status = 'Product'
-        axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+        axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
     }
         
@@ -319,7 +319,7 @@ class Website extends Component {
             s_des: this.state.s_des
         }
         let status = 'Service'
-        axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+        axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
     }
 
@@ -338,7 +338,7 @@ class Website extends Component {
             a_des: desstr
         }
         let status = 'Aboutus'
-        axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+        axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
     }
 
@@ -354,7 +354,7 @@ class Website extends Component {
             certificate: this.state.certificate
         }
         let status = 'Certificate'
-        axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+        axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
     }
 
@@ -388,7 +388,7 @@ class Website extends Component {
             }
         }
         let status = 'Team'
-        axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+        axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
     }
 
@@ -417,7 +417,7 @@ class Website extends Component {
                 p_des: this.state.p_des
             }
             let status = 'Product'
-            axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+            axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
         } else if(e.target.name === 'services') {
             this.setState({i: 0})
@@ -438,7 +438,7 @@ class Website extends Component {
                 s_des: this.state.s_des
             }
             let status = 'Service'
-            axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+            axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
         } else if(e.target.name === 'certificate') {
             this.setState({i: 0})
@@ -454,7 +454,7 @@ class Website extends Component {
                 certificate: this.state.certificate
             }
             let status = 'Certificate'
-            axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+            axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
         } else if(e.target.name === 'team') {
             this.setState({i: 0})
@@ -482,7 +482,7 @@ class Website extends Component {
                 }
             }
             let status = 'Team'
-            axios.post('http://localhost:5000/admin/update/' + this.state.admindata._id + '/' + status, data)
+            axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
         }
     }

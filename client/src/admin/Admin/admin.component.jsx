@@ -38,13 +38,13 @@ class Admin extends Component {
     
     async componentDidMount() {
         mql.addListener(this.mediaQueryChanged);
-        await axios.get('http://localhost:5000/users')
+        await axios.get('/users')
             .then(res => {
                 this.setState({ userdata: res.data });
             });
 
             
-        await axios.get('http://localhost:5000/admin')
+        await axios.get('/admin')
             .then(res => {
                 this.setState({ admindata: res.data });
 
@@ -209,10 +209,10 @@ class Admin extends Component {
                     }
                     
                     status = 'date'
-                    axios.post('http://localhost:5000/admin/update/' + admindt[0]._id + '/' + status, data)
+                    axios.post('/admin/update/' + admindt[0]._id + '/' + status, data)
                     .then(res => console.log(res.data))
                     status = 'count'
-                    axios.post('http://localhost:5000/admin/update/' + admindt[0]._id + '/' + status, count)
+                    axios.post('/admin/update/' + admindt[0]._id + '/' + status, count)
                     .then(res => console.log(res.data))
 
                     this.setState({index: index})
@@ -288,7 +288,7 @@ class Admin extends Component {
                     console.log(data)
                     console.log('It is empty')
                     status = 'date'
-                    axios.post('http://localhost:5000/admin/add/'+status, data)
+                    axios.post('/admin/add/'+status, data)
                     .then(res => console.log(res.data))
                 }
             })

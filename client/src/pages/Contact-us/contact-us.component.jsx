@@ -34,7 +34,7 @@ class Contactus extends Component {
             subject: this.state.subject,
             message: this.state.message
         }
-        axios.post('http://localhost:5000/users/add', user)
+        axios.post('/users/add', user)
             .then(res => console.log(res.data));
 
 		// if (user.email === "sbhavesh@gmail.com" && user.username === "Bhavesh") {
