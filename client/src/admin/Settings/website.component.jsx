@@ -601,7 +601,7 @@ class Website extends Component {
                 <div className="toppart">
                     <h2 className="text-left p-3">Edit Website</h2>
                     <div className="m-3">
-                        <a className="btn border-success text-success mr-2" href="http://localhost:3000/" target="_blank" rel="noopener noreferrer">Preview</a>
+                        <a className="btn border-success text-success mr-2" href="https://desolate-sierra-70172.herokuapp.com/" target="_blank" rel="noopener noreferrer">Preview</a>
                         <button className="btn border-danger text-danger">Publish</button>
                     </div>
                 </div>
