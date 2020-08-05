@@ -16,10 +16,10 @@ mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTo
 
 const port = process.env.PORT || 5000;
 
-// const usersRouter = require('./routers/users');
+const usersRouter = require('./routers/users');
 const adminRouter = require('./routers/admin');
 
-// app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 
 if(process.env.NODE_ENV === 'production') {
