@@ -14,8 +14,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route exact path='/'><Home /></Route>
-        <Route path='/admin' component={Admin} />
+        <Route path='/admin'><Home /></Route>
+        <Route exact path='/' component={Admin} />
       </Router>
     </div>
   );
