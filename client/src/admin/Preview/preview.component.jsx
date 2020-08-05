@@ -5,7 +5,7 @@ import './preview.styles.scss';
 const Preview = () => {
     return (
             <div className="web">
-                <object type="text/html" data="http://localhost:3000/" className="webpre" aria-labelledby="Error"></object>
+                <object type="text/html" data="https://desolate-sierra-70172.herokuapp.com/" className="webpre" aria-labelledby="Error"></object>
             </div>
     );
 }
