@@ -119,7 +119,7 @@ function Home() {
                 <div className='navbar navbar-dark fixed-top navbar-expand-md'>
                     <a href="true" className='navbar-brand siz'>
                         {
-                            (typeof hom.h_logo) === "undefined"
+                            (typeof hom.h_logo) === "undefined" || hom.h_logo === ""
                             ?   <b>[Logo]</b>
                             :   <img src={require('../../Images/'+hom.h_logo)} className="imghome" alt="Product"/>
                         }
@@ -139,7 +139,7 @@ function Home() {
                 <div data-aos="fade-up">
                     <div className="logo">
                         {
-                            (typeof hom.h_logo) === "undefined"
+                            (typeof hom.h_logo) === "undefined" || hom.h_logo === ""
                             ?   <b>[Logo]</b>
                             :   <img src={require('../../Images/'+hom.h_logo)} className="imgho" alt="Product"/>
                         }

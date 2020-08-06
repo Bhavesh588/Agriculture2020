@@ -712,7 +712,7 @@ class Website extends Component {
                                                         <textarea className="span6 w-100" rows="6" name="destext" placeholder="Add your Product discription here" onChange={this.onChange} defaultValue={this.state.p_des[i]}></textarea>
                                                     </li>
                                                     <li className="nav-item text-right">
-                                                        <button className="btn btn-danger mx-3" name={i} onClick={this.onEditProduct}>Save</button>
+                                                        <button className="btn btn-danger" name={i} onClick={this.onEditProduct}>Save</button>
                                                     </li>
                                                 </ul>
                                             </form>
@@ -747,7 +747,7 @@ class Website extends Component {
                                         <textarea className="span6 w-100" rows="6" name="destext" placeholder="Add your Product discription here" onChange={this.onChange} required></textarea>
                                     </li>
                                     <li className="nav-item text-right">
-                                        <button className="btn btn-danger mx-3">Save</button>
+                                        <button className="btn btn-danger">Save</button>
                                     </li>
                                 </ul>
                             </form>
@@ -783,7 +783,7 @@ class Website extends Component {
                                                         <textarea className="span6 w-100" rows="6" name="destext" placeholder="Add your Product discription here" onChange={this.onChange} defaultValue={this.state.s_des[i]}></textarea>
                                                     </li>
                                                     <li className="nav-item text-right">
-                                                        <button className="btn btn-danger mx-3" name={i} onClick={this.onEditService}>Save</button>
+                                                        <button className="btn btn-danger" name={i} onClick={this.onEditService}>Save</button>
                                                     </li>
                                                 </ul>
                                             </form>
@@ -815,7 +815,7 @@ class Website extends Component {
                                         <textarea className="span6 w-100" rows="3" name="destext" placeholder="Add Service Description" onChange={this.onChange} required></textarea>
                                     </li>
                                     <li className="nav-item text-right">
-                                        <button className="btn btn-danger mx-3">Save</button>
+                                        <button className="btn btn-danger">Save</button>
                                     </li>
                                 </ul>
                             </form>
@@ -877,7 +877,7 @@ class Website extends Component {
                                                         <input type="file" name="filecer" id={'##'+i} onChange={this.onChange} />
                                                     </li>
                                                     <li className="nav-item text-right">
-                                                        <button className="btn btn-danger mx-3" name={i} onClick={this.onEditCertificate}>Save</button>
+                                                        <button className="btn btn-danger" name={i} onClick={this.onEditCertificate}>Save</button>
                                                     </li>
                                                 </ul>
                                             </form>
@@ -906,7 +906,7 @@ class Website extends Component {
                                         <input type="file" name="filecer" onChange={this.onChange} required />
                                     </li>
                                     <li className="nav-item text-right">
-                                        <button className="btn btn-danger mx-3">Save</button>
+                                        <button className="btn btn-danger">Save</button>
                                     </li>
                                 </ul>
                             </form>
@@ -946,7 +946,7 @@ class Website extends Component {
                                                         {/* <textarea className="span6 w-100" rows="3" name="destext" placeholder="Add your Product discription here" onChange={this.onChange} defaultValue={this.state.p_des[i]}></textarea> */}
                                                     </li>
                                                     <li className="nav-item text-right">
-                                                        <button className="btn btn-danger mx-3" name={i} onClick={this.onEditTeam}>Save</button>
+                                                        <button className="btn btn-danger" name={i} onClick={this.onEditTeam}>Save</button>
                                                     </li>
                                                 </ul>
                                             </form>
@@ -982,7 +982,7 @@ class Website extends Component {
                                         {/* <textarea className="span6 w-100" rows="3" name="destext" placeholder="Add your Product discription here" onChange={this.onChange} required></textarea> */}
                                     </li>
                                     <li className="nav-item text-right">
-                                        <button className="btn btn-danger mx-3">Save</button>
+                                        <button className="btn btn-danger">Save</button>
                                     </li>
                                 </ul>
                             </form>

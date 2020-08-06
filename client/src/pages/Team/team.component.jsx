@@ -3,7 +3,6 @@ import React from 'react';
 import './team.styles.scss';
 
 const Team = ({ team }) => {
-    console.log(team)
     return(
         <div className="team bg-dark">
             <div className="teambox" data-aos="fade-up">

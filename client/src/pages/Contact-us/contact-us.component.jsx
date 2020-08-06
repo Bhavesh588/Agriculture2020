@@ -59,7 +59,7 @@ class Contactus extends Component {
                         <FormInput name="mobileno" type="text" label="Mobile" maxLength="10" onChange={this.onChange} value={this.state.mobileno} />
                         <FormInput name="subject" type="text" label="Subject" onChange={this.onChange} value={this.state.subject} />
                         <FormInput name="message" type="textarea" label="Message" onChange={this.onChange} value={this.state.message} />
-                        <button className="btn btn-danger w-25 button" type="submit">Submit</button>
+                        <button className="btn btn-danger button" type="submit">Submit</button>
                     </form>
                 </div>
             </div>
