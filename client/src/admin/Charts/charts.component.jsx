@@ -269,7 +269,7 @@ class Charts extends Component {
                                             <h3>No Records</h3>
                                         </div>
                                     :   <div id="orderaccept" className="tab-pane active">
-                                            <canvas id="Chart3" width="200" height="50"></canvas>
+                                            <canvas id="Chart3" width="200"></canvas>
                                         </div>
                                 }
                             </div>
