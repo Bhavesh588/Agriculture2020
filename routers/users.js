@@ -36,6 +36,8 @@ router.route('/add').post((req, res) => {
 	transporter.sendMail(mailOptions, function(error, info){
 		if (error) {
 			res.json('Error: '+error)
+			res.json('Email: '+process.env.EMAIL)
+			res.json('Pass: '+process.env.PASS)
 		} else {
 			console.log('Email sent: ' + info.response);
 			const newUser = new User({fname, email, mobileno, subject, message, created});
