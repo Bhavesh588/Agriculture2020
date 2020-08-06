@@ -335,10 +335,10 @@ class Admin extends Component {
 
         const maincontent = (
             <div className="tab-content content text-dark">
-                <div id="dashboard" className="tab-pane">
+                <div id="dashboard" className="tab-pane active">
                     <Dashboard user={this.state.userdata} />
                 </div>
-                <div id="charts" className="tab-pane active">
+                <div id="charts" className="tab-pane">
                     <Charts user={this.state.userdata} admin={this.state.admindata} index={index} />
                 </div>
                 <div id="orders" className="tab-pane">
