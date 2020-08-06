@@ -66,6 +66,7 @@ function Home() {
     let arrange = []
     let navar = []
     let contentar = []
+    console.log(data.length)
     if((typeof data.length) !== 'undefined') {
         hom = data[0].home
         pro = data[0].product

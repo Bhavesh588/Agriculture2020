@@ -318,7 +318,7 @@ class Admin extends Component {
             <div className="text-light side">
                 <ul className="nav" role="tablist">
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="pill" href="#dashboard">Dashboard</a>
+                        <a className="nav-link active" data-toggle="pill" href="#dashboard">Dashboard</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" data-toggle="pill" href="#charts">Charts</a>
@@ -327,7 +327,7 @@ class Admin extends Component {
                         <a className="nav-link" data-toggle="pill" href="#orders">Orders</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link active" data-toggle="pill" href="#website">Website</a>
+                        <a className="nav-link" data-toggle="pill" href="#website">Website</a>
                     </li>
                 </ul>
             </div>
@@ -338,13 +338,13 @@ class Admin extends Component {
                 <div id="dashboard" className="tab-pane">
                     <Dashboard user={this.state.userdata} />
                 </div>
-                <div id="charts" className="tab-pane">
+                <div id="charts" className="tab-pane active">
                     <Charts user={this.state.userdata} admin={this.state.admindata} index={index} />
                 </div>
                 <div id="orders" className="tab-pane">
                     <Orders user={this.state.userdata} admin={this.state.admindata} />
                 </div>
-                <div id="website" className="tab-pane active">
+                <div id="website" className="tab-pane">
                     <Website />
                 </div>
             </div>
