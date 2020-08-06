@@ -152,6 +152,9 @@ function Home() {
             {
                 contentar.map(c => c)
             }
+            <div className="bg-dark text-light">
+                &#169; All Copyright Reserved By Dwarkesh Enterprice
+            </div>
         </div>
     );
 }

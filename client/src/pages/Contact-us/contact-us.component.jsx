@@ -34,6 +34,7 @@ class Contactus extends Component {
             subject: this.state.subject,
             message: this.state.message
         }
+        
         axios.post('/users/add', user)
             .then(res => console.log(res.data));
 
@@ -42,10 +43,13 @@ class Contactus extends Component {
 		// } else {
 		// }
 
-		// this.setState({
-		// 	username: '',
-		// 	email: ''
-		// })
+		this.setState({
+			fname: '',
+            email: '',
+            mobileno: '',
+            subject: '',
+            message: ''
+		})
     }
     
     render(){
@@ -54,11 +58,11 @@ class Contactus extends Component {
                 <div className="conbox" data-aos="fade-up">
                     <div className="title">Contact Us</div>
                     <form className="formbox" onSubmit={this.onSubmit}>
-                        <FormInput name="fname" type="text" label="Your Name" onChange={this.onChange} value={this.state.fname} />
-                        <FormInput name="email" type="email" label="Email Address" onChange={this.onChange} value={this.state.email} />
-                        <FormInput name="mobileno" type="text" label="Mobile" maxLength="10" onChange={this.onChange} value={this.state.mobileno} />
-                        <FormInput name="subject" type="text" label="Subject" onChange={this.onChange} value={this.state.subject} />
-                        <FormInput name="message" type="textarea" label="Message" onChange={this.onChange} value={this.state.message} />
+                        <FormInput name="fname" type="text" label="Your Name" onChange={this.onChange} value={this.state.fname} required />
+                        <FormInput name="email" type="email" label="Email Address" onChange={this.onChange} value={this.state.email} required />
+                        <FormInput name="mobileno" type="text" label="Mobile" maxLength="10" minLength="10" onChange={this.onChange} value={this.state.mobileno} required />
+                        <FormInput name="subject" type="text" label="Subject" onChange={this.onChange} value={this.state.subject} required />
+                        <FormInput name="message" type="textarea" label="Message" onChange={this.onChange} value={this.state.message} required />
                         <button className="btn btn-danger button" type="submit">Submit</button>
                     </form>
                 </div>
