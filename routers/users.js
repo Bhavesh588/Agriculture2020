@@ -19,8 +19,9 @@ router.route('/add').post((req, res) => {
 	const created = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear()
 
 	var transporter = nodemailer.createTransport({
-		service: 'gmail',
-		Authtication: 'Yes',
+		host: 'smtp.gmail.com',
+		port: 587,
+		secure: false,
 		auth: {
 			user: process.env.EMAIL,
 			pass: process.env.PASS
