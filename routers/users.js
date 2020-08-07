@@ -20,14 +20,15 @@ router.route('/add').post((req, res) => {
 
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
+		Authtication: 'Yes',
 		auth: {
-		user: process.env.EMAIL,
-		pass: process.env.PASS
+			user: process.env.EMAIL,
+			pass: process.env.PASS
 		}
 	});
 	
 	var mailOptions = {
-		from: 'sbhavesh588@gmail.com',
+		from: '"Bhavesh Solanki" <sbhavesh588@gmail.com>',
 		to: email,
 		subject: 'Confirming Email',
 		html: 'Dear, <strong>'+fname+'</strong><p>'+message+'</p><br><br><p>Your Inquiry is being Registed. We will send you a mail or call you for further information.</p><h4>THANK YOU!!</h4>'
