@@ -1,5 +1,19 @@
 const router = require('express').Router();
+const multer = require('multer');
+
 let Admin = require('../models/admin.model');
+
+// Set Storage Engine
+const storage = multer.diskStorage({
+	destination: './client/public/uploads/',
+	filename: function(req, file, cb) {
+		cb(null, file.originalname)
+	}
+});
+const upload = multer({storage: storage});
+
+router.post('/upload', upload.any(), (req,res) => res.json('Its OK'))
+
 
 router.get('/', (req, res) => {
 	Admin.find()
@@ -62,11 +76,9 @@ router.route('/add/:status').post((req, res) => {
 	} else {
 		console.log('There is no Status')
 	}
-
-
 });
 
-router.route('/update/:id/:status').post((req,res) => {
+router.post('/update/:id/:status', (req,res) => {
 
 	if(req.params.status === 'accept') {
 		Admin.findById(req.params.id)
@@ -217,7 +229,7 @@ router.route('/update/:id/:status').post((req,res) => {
 		Admin.findById(req.params.id)
 		.then(admin => { 
 			admin.home = req.body.home
-			
+						
 			admin.save()
 			.then(() => res.json('Admin Updated'))
 			.catch(err => res.status(400).json('Error: ' + err));

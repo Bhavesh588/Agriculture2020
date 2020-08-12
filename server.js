@@ -3,10 +3,14 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 
+const multer = require('multer');
+
 const app = express();
 
 app.use(cors())
 app.use(express.json());
+
+//remove ejs
 
 const db = require('./config/keys').MONGO_URI;
 

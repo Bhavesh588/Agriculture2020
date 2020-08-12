@@ -8,12 +8,13 @@ import axios from 'axios';
 
 class Website extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = { 
             checked2: false,
             admindata: [],
             i: -1,
+            selectedFile: null,
             filehome: '',
             filepro: '',
             fileser: '',
@@ -111,6 +112,7 @@ class Website extends Component {
     onChange(e) {
         let index = e.target.id
         if(e.target.name === 'fileab') {
+            this.setState({ selectedFile: e.target.files[0] })
             index = index.replace('#', '')
             if(e.target.value === "") {
                 this.setState({fileab: this.state.fileab})
@@ -118,24 +120,29 @@ class Website extends Component {
                 this.setState({fileab: e.target.value.replace("C:\\fakepath\\", '')})
             }
         } else if(e.target.name === 'filehome') {
+            this.setState({ selectedFile: e.target.files[0] })
             if((typeof e.target.value) === "undefined" || e.target.value === "") {
                 this.setState({filehome: this.state.filehome})
             } else {
                 this.setState({filehome: e.target.value.replace("C:\\fakepath\\", '')})
             }
         } else if(e.target.name === 'filepro') {
+            index = index.replace('#', '')
+            this.setState({ selectedFile: e.target.files[0] })
             if(index === '') {
                 this.setState({filepro: e.target.value.replace("C:\\fakepath\\", '')})
             } else {
                 if((typeof e.target.value) === "undefined" || e.target.value === "") {
                     this.setState({filepro: this.state.filepro})
                 } else {
+                    this.setState({filepro: this.state.p_filename[index]})
                     this.state.p_filename.splice(index, 1, e.target.value.replace("C:\\fakepath\\", ''))
                     this.setState({p_filename: this.state.p_filename})
                     console.log(this.state.p_filename)
                 }
             }
         } else if(e.target.name === 'fileser') {
+            this.setState({ selectedFile: e.target.files[0] })
             if(index === '') {
                 this.setState({fileser: e.target.value.replace("C:\\fakepath\\", '')})
             } else {
@@ -147,6 +154,7 @@ class Website extends Component {
                 }
             }
         } else if(e.target.name === 'filecer') {
+            this.setState({ selectedFile: e.target.files[0] })
             index = index.replace('##', '')
             if(index === '') {
                 this.setState({filecer: e.target.value.replace("C:\\fakepath\\", '')})
@@ -159,6 +167,7 @@ class Website extends Component {
                 }
             }
         } else if(e.target.name === 'fileteam') {
+            this.setState({ selectedFile: e.target.files[0] })
             index = index.replace('###', '')
             if(index === '') {
                 this.setState({fileteam: e.target.value.replace("C:\\fakepath\\", '')})
@@ -232,15 +241,8 @@ class Website extends Component {
         }
     }
 
-    /*Create function for Save to edit product (Finish)
-    Refresh the Page when Deline the Product (Finish)
-    Finish the Services part (Finish)
-    Finish the rest same way (About us (Finish), Certificate(Finish), Team(Finish))
-    Images of all the backgraound and logos (home, Product(), Service(), About us(), Certificate(), Team())
-    Preview
-    Publish*/
-
-    onEditHome() {
+    onEditHome(e) {
+        e.preventDefault();
         let filestr = this.state.h_logo
         let titlestr = this.state.h_title
         let desstr = this.state.h_moto
@@ -253,7 +255,7 @@ class Website extends Component {
         if(this.state.destext !== '') {
             desstr = this.state.destext
         }
-
+        
         let data = {
             home: {
                 h_logo: filestr,
@@ -263,14 +265,19 @@ class Website extends Component {
         }
         let status = 'Home'
         axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
-        .then(res => console.log(res.data))
+
+        const formdata = new FormData()
+        formdata.append('file', this.state.selectedFile)
+        axios.post('/admin/upload', formdata)
+        .then(res => window.location.reload(true))
+
     }
 
     onEditProduct(e) {
         let index = Number(e.target.name)
         if(this.state.filepro !== '') {
             let file = this.state.p_filename
-            file[index] = this.state.filepro
+            file[index] = this.state.p_filename[index]
             this.setState({p_filename: file})
         } 
         if(this.state.titletext !== '') {
@@ -293,9 +300,17 @@ class Website extends Component {
             p_title: this.state.p_title,
             p_des: this.state.p_des
         }
+        
         let status = 'Product'
         axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
+        
+        const formdata = new FormData()
+        formdata.append('file', this.state.selectedFile)
+        axios.post('/admin/upload', formdata)
+        .then(res => window.location.reload(true))
+        window.location.reload(true)
+        // page is not Refresh after insertion of the file
     }
         
     onEditService(e) {
@@ -321,6 +336,12 @@ class Website extends Component {
         let status = 'Service'
         axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
+
+        const formdata = new FormData()
+        formdata.append('file', this.state.selectedFile)
+        axios.post('/admin/upload', formdata)
+        .then(res => window.location.reload(true))
+
     }
 
     onEditAboutus() {
@@ -340,6 +361,11 @@ class Website extends Component {
         let status = 'Aboutus'
         axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
+
+        const formdata = new FormData()
+        formdata.append('file', this.state.selectedFile)
+        axios.post('/admin/upload', formdata)
+        .then(res => window.location.reload(true))
     }
 
     onEditCertificate(e) {
@@ -356,6 +382,12 @@ class Website extends Component {
         let status = 'Certificate'
         axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
+
+        const formdata = new FormData()
+        formdata.append('file', this.state.selectedFile)
+        axios.post('/admin/upload', formdata)
+        .then(res => window.location.reload(true))
+
     }
 
     onEditTeam(e) {
@@ -390,9 +422,15 @@ class Website extends Component {
         let status = 'Team'
         axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
         .then(res => console.log(res.data))
+
+        const formdata = new FormData()
+        formdata.append('file', this.state.selectedFile)
+        axios.post('/admin/upload', formdata)
+        .then(res => window.location.reload(true))
     }
 
     onSave(e) {
+        // e.preventDefault()
         if(e.target.name === 'product') {
             this.setState({i: 0})
             let file = this.state.p_filename
@@ -419,6 +457,12 @@ class Website extends Component {
             let status = 'Product'
             axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
+
+            const formdata = new FormData()
+            formdata.append('file', this.state.selectedFile)
+            axios.post('/admin/upload', formdata)
+            .then(res => window.location.reload(true))
+
         } else if(e.target.name === 'services') {
             this.setState({i: 0})
             let file = this.state.s_filename
@@ -440,6 +484,12 @@ class Website extends Component {
             let status = 'Service'
             axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
+
+            const formdata = new FormData()
+            formdata.append('file', this.state.selectedFile)
+            axios.post('/admin/upload', formdata)
+            .then(res => window.location.reload(true))
+
         } else if(e.target.name === 'certificate') {
             this.setState({i: 0})
             let file = this.state.certificate
@@ -456,6 +506,12 @@ class Website extends Component {
             let status = 'Certificate'
             axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
+
+            const formdata = new FormData()
+            formdata.append('file', this.state.selectedFile)
+            axios.post('/admin/upload', formdata)
+            .then(res => window.location.reload(true))
+
         } else if(e.target.name === 'team') {
             this.setState({i: 0})
             let file = this.state.t_filename
@@ -484,11 +540,16 @@ class Website extends Component {
             let status = 'Team'
             axios.post('/admin/update/' + this.state.admindata._id + '/' + status, data)
             .then(res => console.log(res.data))
+
+            const formdata = new FormData()
+            formdata.append('file', this.state.selectedFile)
+            axios.post('/admin/upload', formdata)
+            .then(res => window.location.reload(true))
         }
     }
     
     render() {
-        
+
         if(this.state.checked2) {
             document.getElementById('dashboard').classList.add('darktheme','bg-dark')
             document.getElementById('website').classList.add('darktheme','bg-dark')
@@ -604,7 +665,7 @@ class Website extends Component {
                         <a className="btn border-success text-success mr-2" href="https://desolate-sierra-70172.herokuapp.com/" target="_blank" rel="noopener noreferrer">Publish</a>
                     </div>
                 </div>
-                    <hr className="m-0 mx-3 line" />
+                <hr className="m-0 mx-3 line" />
 
                 <h3 className="text-left m-3">Dark Themes</h3>
 
@@ -656,23 +717,21 @@ class Website extends Component {
                     <h4>Home</h4>
                     <div className="imgabout m-auto">
                         {
-                            this.state.filehome === ''
-                            ? this.state.h_logo.length === 0
+                            this.state.h_logo.length === 0
                                 ? <img src={require('../../Images/Service.png')} className="imgab" alt="About us"/>
-                                : <img src={require('../../Images/'+this.state.h_logo)} className="imgab" alt="About us"/>
-                            : <img src={require('../../Images/'+this.state.filehome)} className="imgab" alt="About us"/>
+                                : <img src={require('../../../public/uploads/'+this.state.h_logo)} className="imgab" alt="About us"/>
                         }
                     </div>
                     <form className="formbox">
                         <ul className="navbar-nav">
                             <li className="nav-item py-3">
-                                <input type="file" name="filehome" onChange={this.onChange} />
+                                <input type="file" name="filehome" onChange={this.onChange} required />
                             </li>
                             <li className="nav-item py-2">
-                                <input type="text" name="titletext" placeholder="Add Title" onChange={this.onChange} defaultValue={this.state.h_title} />
+                                <input type="text" name="titletext" placeholder="Add Title" onChange={this.onChange} defaultValue={this.state.h_title} required />
                             </li>
                             <li className="nav-item py-2">
-                                <textarea className="span6 w-100" rows="3" name="destext" placeholder="Type Moto Here" onChange={this.onChange} defaultValue={this.state.h_moto}></textarea>
+                                <textarea className="span6 w-100" rows="3" name="destext" placeholder="Type Moto Here" onChange={this.onChange} defaultValue={this.state.h_moto} required></textarea>
                             </li>
                             <li className="nav-item text-right">
                                 <button className="btn btn-danger" name="about" onClick={this.onEditHome}>Save</button>
@@ -698,7 +757,17 @@ class Website extends Component {
                                         </div>
                                         <div className="collapse navbar-collapse" id={idname[i]}>
                                             <div className="imgproduct m-auto">
-                                                <img src={require('../../Images/'+this.state.p_filename[i])} alt="Product"/>
+                                                {/* {
+                                                    this.state.filepro === ''
+                                                    ? <img src={require('../../../public/uploads/'+this.state.p_filename[i])} id="blah" alt="Product"/>
+                                                    : <img src={require('../../Images/Service.png')} className="imgab" alt="About us"/>
+                                                } */}
+                                                {
+                                                    this.state.filepro === ''
+                                                        ? <img src={require('../../../public/uploads/'+this.state.p_filename[i])} id="blah" alt="Product"/>
+                                                        : <img src={require('../../../public/uploads/'+this.state.filepro)} id="blah" alt="Product"/>
+                                                }
+                                                {/* <img src={require('../../../public/uploads/'+this.state.p_filename[i])} alt="Product"/> */}
                                             </div>
                                             <form className="formbox">
                                                 <ul className="navbar-nav">
@@ -729,25 +798,26 @@ class Website extends Component {
                         </div>
                         <div className="collapse navbar-collapse" id="productadd">
                             <div className="imgproduct m-auto">
-                                {
+                                {/* {
                                     this.state.filepro === ''
                                     ? <img src={require('../../Images/Service.png')} alt="Product"/>
                                     : <img src={require('../../Images/'+this.state.filepro)} alt="Product"/>
-                                }
+                                } */}
                             </div>
-                            <form className="formbox" name="product" onSubmit={this.onSave}>
+                            <form className="formbox">
                                 <ul className="navbar-nav">
                                     <li className="nav-item py-3">
-                                        <input type="file" name="filepro" onChange={this.onChange} required />
+                                        {/* Add required */}
+                                        <input type="file" name="filepro" onChange={this.onChange} />
                                     </li>
                                     <li className="nav-item py-2">
-                                        <input type="text" name="titletext" placeholder="Add Title" onChange={this.onChange} required />
+                                        <input type="text" name="titletext" placeholder="Add Title" onChange={this.onChange} />
                                     </li>
                                     <li className="nav-item py-2">
-                                        <textarea className="span6 w-100" rows="6" name="destext" placeholder="Add your Product discription here" onChange={this.onChange} required></textarea>
+                                        <textarea className="span6 w-100" rows="6" name="destext" placeholder="Add your Product discription here" onChange={this.onChange} ></textarea>
                                     </li>
                                     <li className="nav-item text-right">
-                                        <button className="btn btn-danger">Save</button>
+                                        <button className="btn btn-danger" name="product" onClick={this.onSave}>Save</button>
                                     </li>
                                 </ul>
                             </form>
@@ -774,7 +844,7 @@ class Website extends Component {
                                             <div className="imgproduct m-auto">
                                                 <img src={require('../../Images/'+this.state.s_filename[i])} alt="Product"/>
                                             </div>
-                                            <form className="formbox">
+                                            <form className="formbox" action="/upload-ser" method="POST" encType="multipart/form-data">
                                                 <ul className="navbar-nav">
                                                     <li className="nav-item py-3">
                                                         <input type="file" name="fileser" id={i} onChange={this.onChange} />
@@ -806,16 +876,16 @@ class Website extends Component {
                                     : <img src={require('../../Images/'+this.state.fileser)} alt="Product"/>
                                 }
                             </div>
-                            <form className="formbox" name="services" onSubmit={this.onSave}>
+                            <form className="formbox">
                                 <ul className="navbar-nav">
                                     <li className="nav-item py-3">
-                                        <input type="file" name="fileser" onChange={this.onChange} required />
+                                        <input type="file" name="fileser" onChange={this.onChange} />
                                     </li>
                                     <li className="nav-item py-2">
-                                        <textarea className="span6 w-100" rows="3" name="destext" placeholder="Add Service Description" onChange={this.onChange} required></textarea>
+                                        <textarea className="span6 w-100" rows="3" name="destext" placeholder="Add Service Description" onChange={this.onChange} ></textarea>
                                     </li>
                                     <li className="nav-item text-right">
-                                        <button className="btn btn-danger">Save</button>
+                                        <button className="btn btn-danger" name="services" onClick={this.onSave}>Save</button>
                                     </li>
                                 </ul>
                             </form>
