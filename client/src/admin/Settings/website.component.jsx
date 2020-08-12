@@ -270,10 +270,12 @@ class Website extends Component {
         formdata.append('file', this.state.selectedFile)
         axios.post('/admin/upload', formdata)
         .then(res => window.location.reload(true))
+        window.location.reload(true)
 
     }
 
     onEditProduct(e) {
+        e.preventDefault();
         let index = Number(e.target.name)
         if(this.state.filepro !== '') {
             let file = this.state.p_filename
@@ -719,7 +721,7 @@ class Website extends Component {
                         {
                             this.state.h_logo.length === 0
                                 ? <img src={require('../../Images/Service.png')} className="imgab" alt="About us"/>
-                                : <img src={require('../../../public/uploads/'+this.state.h_logo)} className="imgab" alt="About us"/>
+                                : <img src={require('../../uploads/'+this.state.h_logo)} className="imgab" alt="About us"/>
                         }
                     </div>
                     <form className="formbox">
@@ -764,8 +766,8 @@ class Website extends Component {
                                                 } */}
                                                 {
                                                     this.state.filepro === ''
-                                                        ? <img src={require('../../../public/uploads/'+this.state.p_filename[i])} id="blah" alt="Product"/>
-                                                        : <img src={require('../../../public/uploads/'+this.state.filepro)} id="blah" alt="Product"/>
+                                                        ? <img src={require('../../uploads/'+this.state.p_filename[i])} id="blah" alt="Product"/>
+                                                        : <img src={require('../../uploads/'+this.state.filepro)} id="blah" alt="Product"/>
                                                 }
                                                 {/* <img src={require('../../../public/uploads/'+this.state.p_filename[i])} alt="Product"/> */}
                                             </div>

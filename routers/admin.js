@@ -5,7 +5,7 @@ let Admin = require('../models/admin.model');
 
 // Set Storage Engine
 const storage = multer.diskStorage({
-	destination: './client/public/uploads/',
+	destination: './client/src/uploads/',
 	filename: function(req, file, cb) {
 		cb(null, file.originalname)
 	}
