@@ -721,7 +721,7 @@ class Website extends Component {
                         {
                             this.state.h_logo.length === 0
                                 ? <img src={require('../../Images/Service.png')} className="imgab" alt="About us"/>
-                                : <img src={require('../../uploads/'+this.state.h_logo)} className="imgab" alt="About us"/>
+                                : <img src={require('../../uploads/')} className="imgab" alt="About us"/>
                         }
                     </div>
                     <form className="formbox">
@@ -764,11 +764,11 @@ class Website extends Component {
                                                     ? <img src={require('../../../public/uploads/'+this.state.p_filename[i])} id="blah" alt="Product"/>
                                                     : <img src={require('../../Images/Service.png')} className="imgab" alt="About us"/>
                                                 } */}
-                                                {
+                                                {/* {
                                                     this.state.filepro === ''
                                                         ? <img src={require('../../uploads/'+this.state.p_filename[i])} id="blah" alt="Product"/>
                                                         : <img src={require('../../uploads/'+this.state.filepro)} id="blah" alt="Product"/>
-                                                }
+                                                } */}
                                                 {/* <img src={require('../../../public/uploads/'+this.state.p_filename[i])} alt="Product"/> */}
                                             </div>
                                             <form className="formbox">
